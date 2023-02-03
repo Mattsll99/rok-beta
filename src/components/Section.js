@@ -82,9 +82,6 @@ function Section() {
               <Cover placeholder='You keep' value={keep} onChange={(e) => setKeep(e.target.value)}></Cover>
             </Body>
             <Validate onClick={handleTheLaunch}>Validate</Validate>
-            {data._tokenAddress === '0x0000000000000000000000000000000000000000' &&
-              <WaitContainer></WaitContainer>
-            }
           </Wrap>
         </Card1>
         <Card2></Card2>
@@ -95,7 +92,7 @@ function Section() {
     )
   }
   else if(isDisconnected === false) {
-    if(data === undefined || data._tokenAddress === '0x0000000000000000000000000000000000000000') {
+    if(data === undefined ) {
       return (
         <Container>
             <LaunchContainer>
@@ -133,6 +130,8 @@ function Section() {
     }
   }
 }
+
+//|| data._tokenAddress === '0x0000000000000000000000000000000000000000'
 
 //data._tokenAddress === '0x0000000000000000000000000000000000000000'
 
