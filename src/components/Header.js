@@ -27,4 +27,8 @@ const Container = styled.div`
   flex-direction: row; 
   align-items: center; 
   justify-content: space-between;
+  @media(max-width: 411px) {
+    padding-left: 5px; 
+    padding-right: 5px;
+  }
 `; 

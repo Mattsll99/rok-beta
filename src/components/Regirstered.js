@@ -30,7 +30,9 @@ function Regirstered({name, symbol, address, price, hold}) {
                 <Right>{hold}</Right>
               </Cover>
             </Body>
+            <a href='https://1bdlslro48r.typeform.com/to/BsYZbeOJ'>
             <Bottom>Time to sell!</Bottom>
+            </a>
           </Wrap>
         </Card1>
         <Card2></Card2>
@@ -54,6 +56,9 @@ const Container = styled.div`
   right: 0; 
   margin-left: auto; 
   margin-right: auto;
+  @media(max-width: 411px) {
+    width: 100%;
+  }
 `;
 
 const Left = styled.div`
@@ -69,6 +74,9 @@ const Left = styled.div`
   font-weight: 200; 
   font-size: 25px; 
   color: #ffffff;
+  @media(max-width: 411px) {
+    font-size: 5vw;
+  }
   
 `; 
 
@@ -131,6 +139,9 @@ const Top = styled.div`
   font-weight: 200; 
   font-size: 30px; 
   color: #FFFFFF;
+  @media(max-width: 411px) {
+    font-size: 8vw;
+  }
 `;
 
 const Body = styled.div`

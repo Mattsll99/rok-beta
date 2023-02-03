@@ -179,6 +179,9 @@ const LaunchContainer = styled.div`
   right: 0; 
   margin-left: auto; 
   margin-right: auto;
+  @media(max-width: 411px) {
+    width: 100%;
+  }
 `;
 
 const Block = styled.div`
@@ -223,6 +226,9 @@ const Top = styled.div`
   font-weight: 200; 
   font-size: 30px; 
   color: #FFFFFF;
+  @media(max-width: 411px) {
+    font-size: 8vw;
+  }
 `;
 
 const Body = styled.div`
@@ -242,6 +248,9 @@ const Cover = styled.input`
   color: #222222;
   padding: 5px;
   background: #CDC6BE;
+  @media(max-width: 411px) {
+    font-size: 5vw;
+  }
 `;
 
 const Validate = styled.div`

@@ -77,6 +77,7 @@ const LaunchContainer = styled.div`
   right: 0; 
   margin-left: auto; 
   margin-right: auto;
+  background: red;
 `;
 
 const Block = styled.div`

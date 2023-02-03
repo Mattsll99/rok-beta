@@ -18,6 +18,9 @@ const Container = styled.div`
   width: 200px; 
   position: relative;
   background: transparent;
+  @media(max-width: 411px) {
+    width: 150px;
+  }
 `;
 
 const Box1 = styled.div`
@@ -47,10 +50,16 @@ const Box2 = styled(Box1)`
   z-index: 2;
   margin-top: 10px;
   margin-left: 40px;
+  @media(max-width: 411px) {
+    margin-left: 15px;
+  }
 `;
 
 const Box3 = styled(Box2)`
   z-index: 1;
   margin-top: 5px;
   margin-left: 45px;
+  @media(max-width: 411px) {
+    margin-left: 20px;
+  }
 `;
