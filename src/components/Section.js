@@ -92,7 +92,7 @@ function Section() {
     )
   }
   else if(isDisconnected === false) {
-    if(data === undefined ) {
+    if(data === undefined || data[0] === '0x0000000000000000000000000000000000000000') {
       return (
         <Container>
             <LaunchContainer>
