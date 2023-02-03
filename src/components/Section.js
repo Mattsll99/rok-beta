@@ -104,8 +104,8 @@ function Section() {
                 <Cover placeholder='Name' value={name} onChange={(e) => setName(e.target.value)}></Cover>
                 <Cover placeholder='Symbol' value={symbol} onChange={(e) => setSymbol(e.target.value)}></Cover>
                 <Cover placeholder='Supply' value={supply} onChange={(e) => setSupply(e.target.value)}></Cover>
-                <Cover placeholder='Price' value={price} onChange={(e) => setPrice(e.target.value)}></Cover>
-                <Cover placeholder='You keep' value={keep} onChange={(e) => setKeep(e.target.value)}></Cover>
+                <Cover placeholder='Price (in ETH)' value={price} onChange={(e) => setPrice(e.target.value)}></Cover>
+                <Cover placeholder='You keep (%)' value={keep} onChange={(e) => setKeep(e.target.value)}></Cover>
               </Body>
               <Validate onClick={handleLaunch}>Validate</Validate>
             </Wrap>
