@@ -14,6 +14,7 @@ import Section from './components/Section';
 import ProvidePage from './components/ProvidePage';
 import PaymentWrap from './components/PaymentWrap';
 import CreateBox from './components/CreateBox';
+import {Analytics} from '@vercel/analytics/react';
 
 const alchemyKey = 'w7eEPiIoWugKjoU7vCuJhmfwAihhPNqQ';
 
@@ -55,6 +56,7 @@ function App() {
         })}
       >
     <Container>
+      <Analytics />
       <Header />
       <ProvidePage />
     </Container>
