@@ -4,6 +4,10 @@ import CloseButton from './CloseButton';
 import CreateBox from './CreateBox';
 import ServiceBox from './ServiceBox';
 import { useAccount } from 'wagmi';
+import { useProvider } from 'wagmi';
+import { useContractRead } from 'wagmi';
+import createInterface from '../contracts/Create.json'
+import { ethers } from 'ethers';
 
 
 function ProvidePage() {
@@ -19,7 +23,18 @@ function ProvidePage() {
       setCreate(false)
   }
 
+  const provider = useProvider();
+
   const {address, isConnecting, isDisconnected} = useAccount();
+
+  const {data, isError, isDataLoading} = useContractRead({
+    address: '0x170D5b724C50b609489E9aae1b1D45C2762Ac823', 
+    abi: createInterface, 
+    functionName: 'seeAllServices', 
+    signerOrProvider: provider,
+    args: [address], //address of the user
+    watch: true,
+  })
 
   return (
     <Container>
@@ -55,7 +70,16 @@ function ProvidePage() {
           </AddButton>
         </TopBody>
         <Wrap>
-         
+          {
+            data?.map((offer, i) => (
+              <ServiceBox 
+                provider={offer.address}
+                service={offer.name}
+                price={ethers.utils.formatEther(offer.price).toString()}
+                index={offer.index}
+              />
+            ))
+          }
         </Wrap>
       </Body>
     </Container>
@@ -80,7 +104,12 @@ const BackWrapper = styled.div`
   top: 0; 
   left: 0;
   z-index: 6;
-  background: transparent;
+background: rgba( 255, 255, 255, 0 );
+//box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 9px );
+-webkit-backdrop-filter: blur( 9px );
+//border-radius: 10px;
+//border: 1px solid rgba( 255, 255, 255, 0.18 );
 `; 
 
 const Test = styled.div`

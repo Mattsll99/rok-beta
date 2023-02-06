@@ -1,13 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 
-function ServiceBox() {
+function ServiceBox({provider, service, price, index}) {
   return (
     <Container>
       <Wrapper1>
-        <Body>I will retweet the tweet of your choice</Body>
+        <Body>{service}</Body>
         <Bottom>
-          <Right>0.0002 ETH</Right>
+          <Right>{price} ETH</Right>
         </Bottom>
       </Wrapper1>
       <Wrapper2></Wrapper2>
