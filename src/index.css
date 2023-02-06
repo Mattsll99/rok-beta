@@ -13,6 +13,7 @@
   font-family: 'Roboto Mono', monospace;
   font-weight: 900;
   /*color: #ffff;*/
+  
 }
 
 body {
@@ -20,4 +21,11 @@ body {
   overflow-x: scroll;
   overflow-y: scroll;
   
+}
+
+#inputID::placeholder {
+  color: #B6B6B6;
+  opacity: 1;
+  font-size: 20px;
+  font-weight: 300;
 }

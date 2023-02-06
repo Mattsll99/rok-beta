@@ -13,6 +13,7 @@ import { publicProvider } from 'wagmi/providers/public';
 import Section from './components/Section';
 import ProvidePage from './components/ProvidePage';
 import PaymentWrap from './components/PaymentWrap';
+import CreateBox from './components/CreateBox';
 
 const alchemyKey = 'w7eEPiIoWugKjoU7vCuJhmfwAihhPNqQ';
 
@@ -55,7 +56,7 @@ function App() {
     <Container>
       <Header />
       <ProvidePage />
-      <PaymentWrap />
+      <CreateBox />
     </Container>
     </RainbowKitProvider>
     </WagmiConfig>
