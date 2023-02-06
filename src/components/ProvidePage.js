@@ -55,11 +55,7 @@ function ProvidePage() {
           <Wrapper2></Wrapper2>
           <Wrapper3></Wrapper3>
       </AddressBox>
-        <ShareBox>
-          <Wrapper1>Share your page</Wrapper1>
-          <Wrapper2></Wrapper2>
-          <Wrapper3></Wrapper3>
-        </ShareBox>
+        
       </Top>
       <Body>
         <TopBody>
@@ -87,6 +83,12 @@ function ProvidePage() {
 }
 
 export default ProvidePage
+
+/*<ShareBox>
+          <Wrapper1>Share your page</Wrapper1>
+          <Wrapper2></Wrapper2>
+          <Wrapper3></Wrapper3>
+        </ShareBox>*/
 
 const Container = styled.div`
   height: auto; 
@@ -206,6 +208,16 @@ const Wrap = styled.div`
   display: flex;
   flex-wrap: wrap; 
   justify-content: flex-start;
+  @media(max-width: 864px) {
+    padding-left: 100px;
+  }
+  @media(max-width: 700px) {
+    padding-left: 10px; 
+    padding-right: 10px;
+  }
+  @media(max-width: 520px) {
+    justify-content: center;
+  }
   //justify-content: center;
   //background: red;
   //align-items: center;
