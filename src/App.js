@@ -11,6 +11,8 @@ import { mainnet, polygon, optimism, arbitrum, polygonMumbai } from 'wagmi/chain
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 import Section from './components/Section';
+import ProvidePage from './components/ProvidePage';
+import PaymentWrap from './components/PaymentWrap';
 
 const alchemyKey = 'w7eEPiIoWugKjoU7vCuJhmfwAihhPNqQ';
 
@@ -52,7 +54,8 @@ function App() {
       >
     <Container>
       <Header />
-      <Section />
+      <ProvidePage />
+      <PaymentWrap />
     </Container>
     </RainbowKitProvider>
     </WagmiConfig>

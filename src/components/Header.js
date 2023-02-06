@@ -26,6 +26,8 @@ const Container = styled.div`
   display: flex; 
   flex-direction: row; 
   align-items: center; 
+  z-index: 5;
+  background: #CDC6BE;
   justify-content: space-between;
   @media(max-width: 411px) {
     padding-left: 5px; 
