@@ -34,3 +34,9 @@ const Container = styled.div`
     padding-right: 5px;
   }
 `; 
+
+const DecoWrap = styled.div`
+  height: 60px; 
+  width: 170px; 
+  background: #FFFFFF;
+`;

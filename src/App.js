@@ -45,18 +45,18 @@ function App() {
       <RainbowKitProvider 
         chains={chains}
         theme = {darkTheme({
-          borderRadius: "large",
+          borderRadius: "small",
           accentColor: "#222222",
+          accentColorForeground: "#FFFFFF",
           //actionButtonBorder: "#222222",
           overlayBlur: "small", 
           //fontStack: "rounded",
-          fontStack: "roboto mono", 
+          fontStack: "Roboto Mono", 
         })}
       >
     <Container>
       <Header />
       <ProvidePage />
-      <CreateBox />
     </Container>
     </RainbowKitProvider>
     </WagmiConfig>
@@ -67,6 +67,6 @@ export default App;
 
 const Container = styled.div`
   width: 100vw; 
-  height: 100vh;
+  height: auto;
   background: #CDC6BE
 `;

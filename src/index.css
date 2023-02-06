@@ -7,7 +7,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background: #CDC6BE;
   /*background: #212121;*/
   
   font-family: 'Roboto Mono', monospace;
@@ -20,6 +19,7 @@ body {
   width: 100%;
   overflow-x: scroll;
   overflow-y: scroll;
+  background: #CDC6BE;
   
 }
 

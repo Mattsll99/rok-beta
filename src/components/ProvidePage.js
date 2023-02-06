@@ -1,13 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
+import CloseButton from './CloseButton';
+import CreateBox from './CreateBox';
 import ServiceBox from './ServiceBox';
+import { useAccount } from 'wagmi';
+
 
 function ProvidePage() {
+
+  const [create, setCreate] = useState(false);
+ 
+
+  const handleCreate = () => {
+    setCreate(true)
+  }
+
+  const closeCreate = () => {
+      setCreate(false)
+  }
+
+  const {address, isConnecting, isDisconnected} = useAccount();
+
   return (
     <Container>
+      {create === true &&
+        <BackWrapper>
+          <ButtonContainer onClick={closeCreate}>
+            <ButtonWrapper>
+              <LeftLine></LeftLine>
+              <RightLine></RightLine>
+            </ButtonWrapper>
+          </ButtonContainer>
+          <CreateBox/>
+        </BackWrapper>
+      }
       <Top>
       <AddressBox>
-          <Wrapper1>Ox253...543</Wrapper1>
+          <Wrapper1>{address !== undefined? address.substring(0,5)+"..."+address.substring(38) : "..."}</Wrapper1>
           <Wrapper2></Wrapper2>
           <Wrapper3></Wrapper3>
       </AddressBox>
@@ -20,25 +49,13 @@ function ProvidePage() {
       <Body>
         <TopBody>
           <AddButton>
-              <Wrapper1>Add a service</Wrapper1>
+              <Wrapper1 onClick={handleCreate}>Add a service</Wrapper1>
               <Wrapper2></Wrapper2>
               <Wrapper3></Wrapper3>
           </AddButton>
         </TopBody>
         <Wrap>
-          <ServiceBox />
-          <ServiceBox />
-          <ServiceBox />
-          <ServiceBox />
-          <ServiceBox />
-          <ServiceBox />
-          <ServiceBox />
-          <ServiceBox />
-          <ServiceBox />
-          <ServiceBox />
-          <ServiceBox />
-          <ServiceBox />
-          <ServiceBox />
+         
         </Wrap>
       </Body>
     </Container>
@@ -48,11 +65,30 @@ function ProvidePage() {
 export default ProvidePage
 
 const Container = styled.div`
-  height: 100%; 
+  height: auto; 
+  min-height: 100vh;
   width: 100%;
   background: transparent;
   margin-top: 150px;
 `;
+
+const BackWrapper = styled.div`
+  height : 100vh; 
+  width: 100vw; 
+  background: blue; 
+  position: fixed; 
+  top: 0; 
+  left: 0;
+  z-index: 6;
+  background: transparent;
+`; 
+
+const Test = styled.div`
+  height: 50px; 
+  width: 50px; 
+  position: absolute; 
+  background: red;
+`; 
 
 const Top = styled.div`
   width: 100%; 
@@ -87,6 +123,10 @@ const Wrapper1 = styled.div`
   font-size: 20px; 
   font-weight: 400; 
   color: #222222;
+  &:hover {
+    background: #222222; 
+    color: #FFFFFF;
+  }
 `; 
 
 const Wrapper2 = styled(Wrapper1)`
@@ -141,3 +181,45 @@ const Wrap = styled.div`
   //background: red;
   //align-items: center;
 `; 
+
+const ButtonContainer = styled.div`
+  height: 80px;
+  width: 80px;
+  position: fixed;
+  left: 0;
+  right:0; 
+  margin-left: auto; 
+  margin-right: auto;
+  top: 15vh;
+  z-index: 8;
+  background: #C0AA91;
+  border: solid 5px #222222;
+  cursor: pointer;
+`;
+
+const ButtonWrapper = styled.div`
+  height: 100%; 
+  width: 100%; 
+  position: relative;
+  background: transparent;
+`;
+
+const LeftLine = styled.div`
+  position: absolute; 
+  top: 0; 
+  bottom:0; 
+  margin-top: auto; 
+  margin-bottom: auto; 
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto;
+  background: #A93E3E;
+  height: 80px; 
+  width: 10px;
+  transform: rotate(-45deg)
+`;
+
+const RightLine = styled(LeftLine)`
+transform: rotate(45deg)
+`;
