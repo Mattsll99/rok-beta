@@ -52,7 +52,7 @@ function ProvidePage() {
     setLink(true)
   }
 
-  const findLink= "http://localhost:3000/"+serviceProvider.toString();
+  const findLink= "https://rok-beta.vercel.app/"+serviceProvider.toString();
   console.log(findLink);
 
   return (
