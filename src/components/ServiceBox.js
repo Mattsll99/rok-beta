@@ -70,14 +70,14 @@ function ServiceBox({provider, service, price, index}) {
     <Container>
       {pay === true &&
         <Wrapper0 onClick={hideDisplay}>
-           <Body>{service}</Body>
+           <Body>{(service !== "")? service: <Out>Out of stock</Out>}</Body>
            <Bottom>
           <Right onClick={handlePayment}>Validate</Right>
         </Bottom>
         </Wrapper0>
       }
       <Wrapper1 onClick={displayPay}>
-        <Body>{service}</Body>
+        <Body>{(service !== "")? service: <Out>Out of stock</Out>}</Body>
         <Bottom>
           <Right>{price} ETH</Right>
         </Bottom>
@@ -95,6 +95,12 @@ const Container = styled.div`
   width: 250px;
   position: relative;
 `;
+
+const Out = styled.text`
+  font-weight: 400; 
+  color: red;
+  font-size: 20px;
+`; 
 
 const Wrapper1 = styled.div`
   position: absolute; 

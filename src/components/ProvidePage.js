@@ -213,6 +213,7 @@ const Wrapper0 = styled(Wrapper1)`
   display: flex;
   flex-direction: row;
   justify-content: start;
+  font-size: 12px;
 `;
 
 const Wrapper2 = styled(Wrapper1)`

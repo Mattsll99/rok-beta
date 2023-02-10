@@ -89,7 +89,6 @@ const Container = styled.div`
   width: 100%;
   background: transparent;
   margin-top: 150px;
-  background: red;
 `;
 
 const BackWrapper = styled.div`
