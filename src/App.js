@@ -15,6 +15,11 @@ import ProvidePage from './components/ProvidePage';
 import PaymentWrap from './components/PaymentWrap';
 import CreateBox from './components/CreateBox';
 import {Analytics} from '@vercel/analytics/react';
+import ShareCreate from './components/ShareCreate';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useContractRead } from 'wagmi';
+import { useProvider } from 'wagmi';
+import Interface from './components/Interface';
 
 const alchemyKey = 'w7eEPiIoWugKjoU7vCuJhmfwAihhPNqQ';
 
@@ -42,6 +47,7 @@ const wagmiClient = createClient({
 //#3B3395
 function App() {
   return (
+    
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider 
         chains={chains}
@@ -55,13 +61,16 @@ function App() {
           fontStack: "Roboto Mono", 
         })}
       >
+    <BrowserRouter>
     <Container>
       <Analytics />
       <Header />
-      <ProvidePage />
+      <Interface />
     </Container>
+    </BrowserRouter>
     </RainbowKitProvider>
     </WagmiConfig>
+    
   );
 }
 
@@ -70,5 +79,5 @@ export default App;
 const Container = styled.div`
   width: 100vw; 
   height: auto;
-  background: #CDC6BE
+  background: #CDC6BE;
 `;

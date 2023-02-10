@@ -1,10 +1,82 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
+import { useProvider } from 'wagmi';
+import { useSigner } from 'wagmi';
+import { usePrepareContractWrite } from 'wagmi';
+import { useContractWrite } from 'wagmi';
+import { useContractRead } from 'wagmi';
+import paymentInterface from '../contracts/Payment.json'
+import createInterface from '../contracts/Create.json'
+import { ethers } from 'ethers';
+import { useContract } from 'wagmi';
+import { erc20ABI } from 'wagmi';
+//import { useSigner } from 'wagmi';
 
 function ServiceBox({provider, service, price, index}) {
+
+  const [pay, setPay] = useState(false);
+
+  const displayPay = () => {
+    setPay(true);
+  }
+
+  const hideDisplay = () => {
+    setPay(false)
+  }
+
+  const contractProvider = useProvider();
+
+  const { data: signer, isSignerError, isSignerLoading } = useSigner()
+
+  const rETH = useContract({
+    address: '0xD77fF3E6c5a08cFFBE0c78Bd61dF1B418f926645', 
+    abi: erc20ABI, 
+    signerOrProvider: signer,
+  })
+
+
+  const {config} = usePrepareContractWrite({
+    address: '0x5E2CDB4E1B3188c6ce9aC342f6F558cF2A511b7D', 
+    abi: paymentInterface, 
+    functionName: 'payForService', 
+    signerOrProvider: contractProvider, 
+    args: [provider, index]
+  })
+
+  const {serviceData, isError, isDataLoading} = useContractRead({
+    address: '0x170D5b724C50b609489E9aae1b1D45C2762Ac823', 
+    abi: createInterface, 
+    functionName: 'seeService', 
+    signerOrProvider: provider,
+    args: [provider, index], //address of the user
+    watch: true,
+  })
+
+  const {data, isLoading, isSuccess, write} = useContractWrite(config);
+
+  const servicePrice = (serviceData !== undefined)? ethers.utils.formatEther(serviceData.price).toString() : "0";
+
+  async function handlePayment() {
+    const result = await rETH.connect(signer).approve('0x5E2CDB4E1B3188c6ce9aC342f6F558cF2A511b7D', ethers.utils.parseEther(price).toString()); 
+    await result.wait(); 
+    const transaction = await write(); 
+    await transaction.wait();
+  }
+  
+
+  console.log(price)
+
   return (
     <Container>
-      <Wrapper1>
+      {pay === true &&
+        <Wrapper0 onClick={hideDisplay}>
+           <Body>{service}</Body>
+           <Bottom>
+          <Right onClick={handlePayment}>Validate</Right>
+        </Bottom>
+        </Wrapper0>
+      }
+      <Wrapper1 onClick={displayPay}>
         <Body>{service}</Body>
         <Bottom>
           <Right>{price} ETH</Right>
@@ -46,6 +118,16 @@ const Wrapper1 = styled.div`
     color: #FFFFFF;
   }
 `; 
+
+const Wrapper0 = styled(Wrapper1)`
+  background: #222222;
+  bottom: -5px; 
+  left: -5px; 
+  z-index: 5;
+  display: flex; 
+  flex-direction: column; 
+  color: #FFFFFF;
+`
 
 const Wrapper2 = styled(Wrapper1)`
   bottom: 5px; 

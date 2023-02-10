@@ -8,19 +8,11 @@ import { useProvider } from 'wagmi';
 import { useContractRead } from 'wagmi';
 import createInterface from '../contracts/Create.json'
 import { ethers } from 'ethers';
-import {Link, Route, Routes} from 'react-router-dom';
-import ShareCreate from './ShareCreate';
 
 
-/*const handleLink = () => {
-
-} */
-//Pas besoin de router, just need the link
-
-function ProvidePage() {
+function ShareCreate({serviceProvider}) {
 
   const [create, setCreate] = useState(false);
-  const [link, setLink] = useState(false);
  
 
   const handleCreate = () => {
@@ -35,25 +27,14 @@ function ProvidePage() {
 
   const {address, isConnecting, isDisconnected} = useAccount();
 
-  //const stringAddress = address.toString();
-
-  const serviceProvider = (address !== undefined)? address.toString() : "/";
-
   const {data, isError, isDataLoading} = useContractRead({
     address: '0x170D5b724C50b609489E9aae1b1D45C2762Ac823', 
     abi: createInterface, 
     functionName: 'seeAllServices', 
     signerOrProvider: provider,
-    args: [address], //address of the user
+    args: [serviceProvider], //address of the user
     watch: true,
   })
-
-  const displayLink = () => {
-    setLink(true)
-  }
-
-  const findLink= "http://localhost:3000/"+serviceProvider.toString();
-  console.log(findLink);
 
   return (
     <Container>
@@ -70,38 +51,18 @@ function ProvidePage() {
       }
       <Top>
       <AddressBox>
-          <Wrapper1>{address !== undefined? address.substring(0,5)+"..."+address.substring(38) : "..."}</Wrapper1>
+          <Wrapper1>{serviceProvider !== undefined? serviceProvider.substring(0,5)+"..."+serviceProvider.substring(38) : "..."}</Wrapper1>
           <Wrapper2></Wrapper2>
           <Wrapper3></Wrapper3>
       </AddressBox>
-      
-      
-     
-      <ShareBox>
-        {link === true &&
-          <Wrapper0>{findLink}</Wrapper0>
-        }
-          <Wrapper1 onClick={displayLink}> Share your page</Wrapper1>
-          <Wrapper2></Wrapper2>
-          <Wrapper3></Wrapper3>
-      </ShareBox>
-      
-      
-      
+        
       </Top>
       <Body>
-        <TopBody>
-          <AddButton>
-              <Wrapper1 onClick={handleCreate}>Add a service</Wrapper1>
-              <Wrapper2></Wrapper2>
-              <Wrapper3></Wrapper3>
-          </AddButton>
-        </TopBody>
         <Wrap>
           {
             data?.map((offer, i) => (
               <ServiceBox 
-                provider={offer.provider}
+                provider={offer.address}
                 service={offer.name}
                 price={ethers.utils.formatEther(offer.price).toString()}
                 index={offer.index}
@@ -114,7 +75,7 @@ function ProvidePage() {
   )
 }
 
-export default ProvidePage
+export default ShareCreate
 
 /*<ShareBox>
           <Wrapper1>Share your page</Wrapper1>
@@ -122,24 +83,14 @@ export default ProvidePage
           <Wrapper3></Wrapper3>
         </ShareBox>*/
 
-/* 
-<Routes>
-        <Route path={address.toString()} element={<ShareCreate serviceProvider={address} />}/>
-      </Routes>
-*/
-
-/* 
-<Link style={{textDecoration: "none", color:"#FFFFFF", fontWeight:"400"}} to={serviceProvider} target='blank'>
-*/
-
 const Container = styled.div`
   height: auto; 
   min-height: 100vh;
   width: 100%;
   background: transparent;
   margin-top: 150px;
+  background: red;
 `;
-
 
 const BackWrapper = styled.div`
   height : 100vh; 
@@ -202,18 +153,6 @@ const Wrapper1 = styled.div`
     color: #FFFFFF;
   }
 `; 
-
-const Wrapper0 = styled(Wrapper1)`
-  bottom: -5px; 
-  left: -5px;
-  z-index: 4;
-  overflow-y: scroll;
-  background: #222222; 
-  color: #FFFFFF;
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-`;
 
 const Wrapper2 = styled(Wrapper1)`
   bottom: 5px; 
