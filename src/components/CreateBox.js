@@ -44,7 +44,7 @@ function CreateBox() {
     <Container>
       <Wrapper1>
           <Top>
-            <TopWrapper id="inputID" placeholder="Gig" value={gig} maxLength={50} onChange={e => {setCount(e.target.value.length); setGig(e.target.value)}}></TopWrapper>
+            <TopWrapper id="inputID" placeholder="Service you provide" value={gig} maxLength={50} onChange={e => {setCount(e.target.value.length); setGig(e.target.value)}}></TopWrapper>
           </Top>
           <Counter>{count}/50</Counter>
           <Middle>
@@ -93,6 +93,9 @@ const Container = styled.div`
   margin-left: auto; 
   margin-right: auto;
   z-index: 7;
+  @media(max-width:572px) {
+    width: 95%;
+  }
 `;
 
 const Currency = styled.text`
