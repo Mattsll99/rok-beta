@@ -106,6 +106,10 @@ const Currency = styled.text`
   position: absolute;
   margin-left: 160px;
   margin-top: 5px;
+  @media(max-width: 572px) {
+    font-size: 4vw;
+    margin-left: 130px;
+  }
 `; 
 
 
@@ -214,10 +218,11 @@ const InputWrapper = styled.input`
   padding: 5px;
   decoration: none;
   font-weight: 200;
-  font-size: 15px;
-  font-size: 30px;
+  //font-size: 15px;
+  //font-size: 30px;
   color: #222222;
   font-family: roboto mono;
+  font-size: 4vw;
 `; 
 
 const Bottom = styled.div`
@@ -267,5 +272,8 @@ const Validate = styled.div`
   &:hover {
     background: #222222; 
     color: #FFFFFF;
+  }
+  @media(max-width:572px ) {
+    font-size: 4vw;
   }
 `;
