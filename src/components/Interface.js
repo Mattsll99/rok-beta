@@ -14,26 +14,41 @@ function Interface() {
   const {address, isConnecting, isDisconnected} = useAccount();
 
   const {data, isError, isDataLoading} = useContractRead({
-    address: '0x170D5b724C50b609489E9aae1b1D45C2762Ac823', 
+    address: '0xe4D691998f2f22eDD3d9c747521DA42253E76720', 
     abi: createInterface, 
-    functionName: 'seeAllServices', 
+    functionName: 'getAllProviders', 
     signerOrProvider: provider,
-    args: [address], //address of the user
     watch: true,
   })
 
-  const serviceProvider = (address !== undefined)? address.toString() : "/";
-  return (
-    
+  //const serviceProvider = (address !== undefined)? address.toString() : "/";
+  return ( 
     <Container>
       <Routes>
         <Route path="/" element={<ProvidePage />}/>
-        <Route path={serviceProvider} element={<ShareCreate serviceProvider={serviceProvider}/>}/>
+        {
+          data?.map((serviceProvider, i) => (
+            <Route path={serviceProvider} element={<ShareCreate serviceProvider={serviceProvider}/>}/>
+          ))
+        }
       </Routes>
     </Container>
     
   )
 }
+
+/* 
+{
+            data?.map((offer, i) => (
+              <ServiceBox 
+                provider={offer.provider}
+                service={offer.name}
+                price={ethers.utils.formatEther(offer.price).toString()}
+                index={offer.index}
+              />
+            ))
+          }
+*/
 
 export default Interface
 

@@ -21,7 +21,7 @@ function CreateBox() {
   const provider = useProvider();
 
   const {config} = usePrepareContractWrite({
-    address: '0x170D5b724C50b609489E9aae1b1D45C2762Ac823', 
+    address: '0xe4D691998f2f22eDD3d9c747521DA42253E76720', 
     abi: createInterface, 
     functionName: 'addService', 
     signerOrProvider: provider, 
