@@ -53,7 +53,7 @@ function App() {
         chains={chains}
         theme = {darkTheme({
           borderRadius: "small",
-          accentColor: "#222222",
+          accentColor: "#FFFFFF",
           accentColorForeground: "#FFFFFF",
           //actionButtonBorder: "#222222",
           overlayBlur: "small", 
