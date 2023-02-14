@@ -15,7 +15,7 @@ config.ignoreWarnings = [/Failed to parse source map/];
 config.resolve.fallback = fallback;
 config.plugins = (config.plugins || []).concat([
 new webpack.ProvidePlugin({
-process: 'process/browser',
+//process: 'process/browser',
 Buffer: ['buffer', 'Buffer']
 })
 ])
