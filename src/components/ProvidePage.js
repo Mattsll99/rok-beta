@@ -56,7 +56,7 @@ function ProvidePage() {
   }
   //https://rok-beta.vercel.app/
   const findLink= "http://localhost:3000/"+serviceProvider.toString();
-  console.log(findLink);
+  //console.log(findLink);
 
   return (
     <Container>
@@ -290,7 +290,7 @@ const ButtonContainer = styled.div`
   right:0; 
   margin-left: auto; 
   margin-right: auto;
-  top: 15vh;
+  top: 85px;
   z-index: 8;
   background: #C0AA91;
   border: solid 5px #222222;

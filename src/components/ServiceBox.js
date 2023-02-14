@@ -64,7 +64,7 @@ function ServiceBox({provider, service, price, index}) {
   }
   
 
-  console.log(price)
+  //console.log(price)
 
   return (
     <Container>

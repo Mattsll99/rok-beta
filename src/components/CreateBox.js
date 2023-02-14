@@ -27,9 +27,9 @@ function CreateBox() {
     signerOrProvider: provider, 
     args: [
       gig, 
-      (typeof price !== 'undefined' && price.toString() !== "")? ethers.utils.parseEther(price).toString(): "0",
-      (typeof payees !== 'undefined' && payees.toString() !== "")? payees: "0",
-      (typeof time !== 'undefined' && time.toString() !== "")? ethers.utils.parseEther(time).toString(): "0",
+      (typeof price !== 'undefined' && typeof price === 'number' && price.toString() !== "")? ethers.utils.parseEther(price).toString(): "0",
+      (typeof payees !== 'undefined' && typeof payees === 'number' && payees.toString() !== "")? payees: "0",
+      (typeof time !== 'undefined' && typeof time === 'number' && time.toString() !== "")? ethers.utils.parseEther(time).toString(): "0",
     ]
   })
 
@@ -78,16 +78,16 @@ export default CreateBox
       <Bottom></Bottom>*/
 
 const Container = styled.div`
-  position: absolute; 
+  position: fixed; 
   height: 350px; 
   width: 550px; 
   background: #C0AA91;
   border: solid 6px #222222;
   position: fixed;
-  top: 0; 
-  bottom: 0; 
-  margin-top: auto; 
-  margin-bottom: auto; 
+  top: 170px; 
+  //bottom: 0; 
+  //margin-top: auto; 
+  //margin-bottom: auto; 
   left: 0; 
   right: 0; 
   margin-left: auto; 
@@ -222,7 +222,10 @@ const InputWrapper = styled.input`
   //font-size: 30px;
   color: #222222;
   font-family: roboto mono;
-  font-size: 4vw;
+  font-size: 28px;
+  @media(max-width: 572px) {
+    font-size: 4vw;
+  }
 `; 
 
 const Bottom = styled.div`

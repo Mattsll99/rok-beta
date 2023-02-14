@@ -26,6 +26,6 @@ body {
 #inputID::placeholder {
   color: #B6B6B6;
   opacity: 1;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 300;
 }
