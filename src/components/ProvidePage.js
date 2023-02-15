@@ -55,9 +55,11 @@ function ProvidePage() {
     setLink(true)
   }
   //https://rok-beta.vercel.app/
-  const findLink= "http://localhost:3000/"+serviceProvider.toString();
+  const findLink= "https://rok-beta.vercel.app/"+serviceProvider.toString();
   //console.log(findLink);
 
+  //console.log(data);
+  
   return (
     <Container>
       {create === true &&
@@ -141,6 +143,7 @@ const Container = styled.div`
   width: 100%;
   background: transparent;
   margin-top: 150px;
+  //padding-bottom: 20px;
 `;
 
 
@@ -210,13 +213,14 @@ const Wrapper0 = styled(Wrapper1)`
   bottom: -5px; 
   left: -5px;
   z-index: 4;
-  overflow-y: scroll;
+  overflow: scroll;
   background: #222222; 
   color: #FFFFFF;
   display: flex;
   flex-direction: row;
   justify-content: start;
   font-size: 12px;
+  white-space: pre;
 `;
 
 const Wrapper2 = styled(Wrapper1)`

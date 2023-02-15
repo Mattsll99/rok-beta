@@ -19,6 +19,7 @@ function LaunchCard() {
   const provider = useProvider();
 
   const { address, isConnecting, isDisconnected } = useAccount()
+  
 
   const {config} = usePrepareContractWrite({
     address: '0x0DFc44eB3eB97bc9050E8E460f4af39179BC61E2', 

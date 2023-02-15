@@ -53,7 +53,7 @@ function App() {
         chains={chains}
         theme = {darkTheme({
           borderRadius: "small",
-          accentColor: "#FFFFFF",
+          accentColor: "#222222",
           accentColorForeground: "#FFFFFF",
           //actionButtonBorder: "#222222",
           overlayBlur: "small", 
@@ -80,4 +80,5 @@ const Container = styled.div`
   width: 100vw; 
   height: auto;
   background: #CDC6BE;
-`;
+  padding-bottom: 20px;
+`; 

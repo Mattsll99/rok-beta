@@ -27,14 +27,29 @@ function CreateBox() {
     signerOrProvider: provider, 
     args: [
       gig, 
-      (typeof price !== 'undefined' && typeof price === 'number' && price.toString() !== "")? ethers.utils.parseEther(price).toString(): "0",
-      (typeof payees !== 'undefined' && typeof payees === 'number' && payees.toString() !== "")? payees: "0",
-      (typeof time !== 'undefined' && typeof time === 'number' && time.toString() !== "")? ethers.utils.parseEther(time).toString(): "0",
+      (typeof price !== 'undefined' && isNaN(Number(price)) === false && price.toString() !== "")? ethers.utils.parseEther(price).toString(): "0",
+      (typeof payees !== 'undefined' && isNaN(Number(payees)) === false && payees.toString() !== "")? payees: "0",
+      (typeof time !== 'undefined' && isNaN(Number(time)) === false && time.toString() !== "")? ethers.utils.parseEther(time).toString(): "0",
     ]
   })
 
-  const {data, isLoading, isSuccess, write} = useContractWrite(config);
+  console.log(price);
 
+  const {data, isLoading, isSuccess, write} = useContractWrite(config);
+  /*
+  (typeof price !== 'undefined' && isNaN(price.toString()) === false && price.toString() !== "")? ethers.utils.parseEther(price).toString(): "0",
+      (typeof payees !== 'undefined' && isNaN(payees.toString()) === false && payees.toString() !== "")? payees: "0",
+      (typeof time !== 'undefined' && isNaN(time.toString()) === false && time.toString() !== "")? ethers.utils.parseEther(time).toString(): "0",
+  */
+
+  //&& typeof price === 'number' 
+  //&& typeof payees === 'number'
+  //&& typeof time === 'number'
+
+  //ethers.utils.parseEther(price).toString()
+  //ethers.utils.parseEther(time).toString()
+
+  //console.log(ethers.utils.parseEther(price).toString())
   const handleAddService = () => {
     write();
   }

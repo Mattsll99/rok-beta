@@ -43,18 +43,18 @@ function ServiceBox({provider, service, price, index}) {
     args: [provider, index]
   })
 
-  const {serviceData, isError, isDataLoading} = useContractRead({
+  /*const {serviceData, isError, isDataLoading} = useContractRead({
     address: '0x170D5b724C50b609489E9aae1b1D45C2762Ac823', 
     abi: createInterface, 
     functionName: 'seeService', 
     signerOrProvider: provider,
     args: [provider, index], //address of the user
     watch: true,
-  })
+  })*/
 
   const {data, isLoading, isSuccess, write} = useContractWrite(config);
 
-  const servicePrice = (serviceData !== undefined)? ethers.utils.formatEther(serviceData.price).toString() : "0";
+  //const servicePrice = (serviceData !== undefined)? ethers.utils.formatEther(serviceData.price).toString() : "0";
 
   async function handlePayment() {
     const result = await rETH.connect(signer).approve('0x5E2CDB4E1B3188c6ce9aC342f6F558cF2A511b7D', ethers.utils.parseEther(price).toString()); 
