@@ -72,7 +72,7 @@ function CreateBox() {
           </Middle>
           <Bottom>
             <LeftBottom>
-              <InputWrapper id="inputID" placeholder="Times you offer it" value={payees} onChange={(e) => setPayees(e.target.value)}></InputWrapper>
+              <InputWrapper id="inputID" placeholder="Copies" value={payees} onChange={(e) => setPayees(e.target.value)}></InputWrapper>
             </LeftBottom>
             <RightBottom>
               <Validate onClick={handleAddService}>Validate</Validate>
