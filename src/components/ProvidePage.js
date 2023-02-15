@@ -241,6 +241,9 @@ const AddressBox = styled.div`
   position: relative;
   margin-right: 40px;
   cursor: pointer;
+  @media(max-width: 499px) {
+    display: none
+  }
 `;
 
 const Body = styled.div`

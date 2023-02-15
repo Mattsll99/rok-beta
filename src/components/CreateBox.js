@@ -64,8 +64,7 @@ function CreateBox() {
           <Counter>{count}/50</Counter>
           <Middle>
             <Left>
-              <Currency>ETH</Currency>
-              <InputWrapper id="inputID" placeholder="Price" value={price} onChange={(e) => setPrice(e.target.value)}></InputWrapper>
+              <InputWrapper id="inputID" placeholder="Price (ETH)" value={price} onChange={(e) => setPrice(e.target.value)}></InputWrapper>
             </Left>
             <Right>
               <InputWrapper id="inputID" placeholder="Days to deliver" value={time} onChange={(e) => setTime(e.target.value)}></InputWrapper>
@@ -73,7 +72,7 @@ function CreateBox() {
           </Middle>
           <Bottom>
             <LeftBottom>
-              <InputWrapper id="inputID" placeholder="Number of payees" value={payees} onChange={(e) => setPayees(e.target.value)}></InputWrapper>
+              <InputWrapper id="inputID" placeholder="Times you offer it" value={payees} onChange={(e) => setPayees(e.target.value)}></InputWrapper>
             </LeftBottom>
             <RightBottom>
               <Validate onClick={handleAddService}>Validate</Validate>
@@ -150,6 +149,9 @@ const Wrapper1 = styled.div`
   font-weight: 400; 
   color: #FFFFFF;
   flex-direction: column;
+  /*@media(max-width: 435px) {
+    width: 95%
+  }*/
 `; 
 
 const Counter = styled.text`
@@ -213,6 +215,9 @@ const Left = styled.div`
   justify-content: center; 
   align-items: center;
   padding: 10px;
+  @media(max-width: 429px) {
+    width: 40%;
+  }
 `; 
 
 const Right = styled.div`
@@ -223,6 +228,9 @@ const Right = styled.div`
   justify-content: center; 
   align-items: center;
   padding: 10px;
+  @media(max-width: 429px) {
+    width: 60%;
+  }
 `;
 
 const InputWrapper = styled.input`
